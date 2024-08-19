@@ -1,3 +1,19 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import {CountryListComponent} from "./country-list/country-list.component";
+import {CitiesListComponent} from "./cities-list/cities-list.component";
+
+export const routes: Routes = [
+  {
+    path: 'countries',
+    component: CountryListComponent,
+  },
+  {
+    path: 'cities',
+    component: CitiesListComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/countries'
+  },
+];
