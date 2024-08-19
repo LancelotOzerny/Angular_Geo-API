@@ -1,0 +1,48 @@
+/*
+  1) APPLICATION STYLES
+  2) MATERIAL RADIO BUTTONS
+*/
+
+
+
+
+
+/* -------------------- START APPLICATION STYLES -------------------- */
+.app-block
+{
+  max-width: 1200px;
+  margin : 0 auto;
+}
+.wrapper
+{
+  padding: 25px 0;
+}
+.app-header-wrapper
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.app-title
+{
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+/* -------------------- END APPLICATION STYLES -------------------- */
+
+
+
+
+
+
+/* -------------------- START MATERIAL RADIO BUTTONS -------------------- */
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+/* -------------------- END MATERIAL RADIO BUTTONS -------------------- */
