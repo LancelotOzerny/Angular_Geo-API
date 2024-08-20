@@ -11,7 +11,7 @@ import {LangComponent} from "../lang/lang.component";
 @Component({
   selector: 'app-country-list',
   standalone: true,
-    imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientModule, LangComponent],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientModule, LangComponent],
   templateUrl: './country-list.component.html',
   styleUrl: './country-list.component.scss',
   providers: [GeoService],
@@ -20,16 +20,14 @@ export class CountryListComponent implements OnInit
 {
   displayedColumns = ['wikiDataId', 'name', 'code', 'currencyCodes'];
 
-  dataSource = [
-    { wikiDataId : 'Q222', name : 'Afghanistan', code : 'AF', currencyCodes : ['ALL, EUR']},
-    { wikiDataId : 'Q222', name : 'Afghanistan', code : 'AF', currencyCodes : ['ALL, EUR']},
-    { wikiDataId : 'Q222', name : 'Afghanistan', code : 'AF', currencyCodes : ['ALL, EUR']},
-    { wikiDataId : 'Q222', name : 'Afghanistan', code : 'AF', currencyCodes : ['ALL, EUR']},
-    { wikiDataId : 'Q222', name : 'Afghanistan', code : 'AF', currencyCodes : ['ALL, EUR']},
-    { wikiDataId : 'Q222', name : 'Afghanistan', code : 'AF', currencyCodes : ['ALL, EUR']},
-    { wikiDataId : 'Q222', name : 'Afghanistan', code : 'AF', currencyCodes : ['ALL, EUR']},
-    { wikiDataId : 'Q222', name : 'Afghanistan', code : 'AF', currencyCodes : ['ALL, EUR']},
-  ];
+  dataSource = [];
+
+  limit: number = 5;
+  offset: number = 0;
+  length: number = 0;
+
+  paginatorIsEnable: boolean = false;
+  queryDelay : number = 250;
 
   constructor(private geoService : GeoService) {}
 
@@ -37,13 +35,6 @@ export class CountryListComponent implements OnInit
   {
     this.setCountriesData();
   }
-
-  limit: number = 5;
-  offset: number = 0;
-  length: number = 0;
-
-  paginatorIsEnable: boolean = false;
-  queryDelay : number = 1_000;
 
   setCountriesData()
   {
@@ -57,6 +48,12 @@ export class CountryListComponent implements OnInit
         setTimeout(() => {
           this.paginatorIsEnable = false;
         }, this.queryDelay);
+      },
+      error: (data : any) => {
+        if (data.status === 429)
+        {
+          this.setCountriesData();
+        }
       }
     });
   }
