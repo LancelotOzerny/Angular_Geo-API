@@ -1,8 +1,15 @@
 <div class="app-block">
   <div class="wrapper app-header-wrapper">
-    <h1 class="app-title">Геоинформация</h1>
+    <h1 class="app-title">
+      <app-lang
+        [text]="[
+          { lang: 'EN', text: 'GeoInformation' },
+          { lang: 'RU', text: 'Геоинформация' },
+        ]"
+      [language]="currentLanguage"></app-lang>
+    </h1>
 
-    <mat-radio-group>
+    <mat-radio-group (change)="ChangeLanguage($event)">
       <mat-radio-button [checked]="true" value="RU">RU</mat-radio-button>
       <mat-radio-button value="EN">EN</mat-radio-button>
     </mat-radio-group>
