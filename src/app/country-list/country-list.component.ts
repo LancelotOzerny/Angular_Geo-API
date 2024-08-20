@@ -6,11 +6,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {GeoService} from "../services/geo.service";
 import {HttpClientModule} from "@angular/common/http";
+import {LangComponent} from "../lang/lang.component";
 
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientModule],
+    imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientModule, LangComponent],
   templateUrl: './country-list.component.html',
   styleUrl: './country-list.component.scss',
   providers: [GeoService],

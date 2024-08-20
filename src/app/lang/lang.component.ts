@@ -1,16 +1,19 @@
 import {Component, Input} from '@angular/core';
+import {LanguageService} from "../services/language.service";
 
 @Component({
   selector: 'app-lang',
   standalone: true,
   imports: [],
   templateUrl: './lang.component.html',
-  styles: ``
+  styles: ``,
+  providers: [ LanguageService ],
 })
 export class LangComponent
 {
-  @Input() language : string = 'RU';
   @Input() text : { lang : string, text : string }[]  = [];
+
+  constructor(private readonly langService : LanguageService) {}
 
   getText() : string
   {
@@ -18,7 +21,7 @@ export class LangComponent
 
     for (let item of this.text)
     {
-      if (item.lang === this.language)
+      if (item.lang === this.langService.getLang())
       {
         output = item.text;
         break;
