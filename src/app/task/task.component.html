@@ -1,0 +1,127 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <app-lang
+        [text]="[
+          { lang: 'EN', text: 'Test task' },
+          { lang: 'RU', text: 'Тестовое задание' },
+        ]"></app-lang>
+    </mat-panel-title>
+    <mat-panel-description>
+      <app-lang
+        [text]="[
+          { lang: 'EN', text: 'Description of the functionality that needs to be implemented in the course of solving the current problem' },
+          { lang: 'RU', text: 'Описание функционала который требуется реализовать в ходе решения текущей задачи' },
+        ]"></app-lang>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div>
+    <p>
+      <app-lang
+        [text]="[
+          { lang: 'EN', text: 'It is necessary to develop a web application using Angular of two pages (each page should open with its own url):' },
+          { lang: 'RU', text: 'Необходимо разработать веб-приложение с использованием Angular из двух страниц <br>(каждая страница должна открываться по-собственному url):' },
+        ]"></app-lang>
+    </p>
+    <p>
+      <app-lang
+        [text]="[
+          { lang: 'EN', text: 'List of countries' },
+          { lang: 'RU', text: 'Списка стран' },
+        ]"></app-lang>
+    </p>
+
+    <ul> <app-lang
+      [text]="[
+          { lang : 'RU', text: 'Должен быть реализован следующий функционал:'},
+          { lang : 'EN', text: 'The following functionality should be implemented:'},
+        ]"></app-lang>
+      <li> <s> <app-lang
+        [text]="[
+            { lang : 'RU', text: 'Получения списка стран по API (/v1/geo/countries) серверной пагинацией'},
+            { lang : 'EN', text: 'Getting a list of countries via API (/v1/geo/countries) by server pagination'},
+          ]"></app-lang> </s> </li>
+      <li> <s> <app-lang
+        [text]="[
+            { lang : 'RU', text: 'Отображение полученной информации в таблице'},
+            { lang : 'EN', text: 'Displaying the received information in the table'},
+          ]"></app-lang> </s> </li>
+      <li> <app-lang
+        [text]="[
+            { lang : 'RU', text: 'Фильтрация (поиск) по наименованию'},
+            { lang : 'EN', text: 'Filtering (search) by name'},
+          ]"></app-lang> </li>
+      <li> <app-lang
+        [text]="[
+            { lang : 'RU', text: 'По нажатию на иконку перехода (в ячейке ID страны) открывать страницу городов с предустановленным фильтром по стране'},
+            { lang : 'EN', text: 'By clicking on the transition icon (in the country ID cell), open the cities page with a preset filter by country'},
+          ]"></app-lang> </li>
+    </ul>
+
+    <p><app-lang
+      [text]="[
+          { lang : 'RU', text : 'Списка городов' },
+          { lang : 'EN', text : 'List of cities' },
+        ]"></app-lang></p>
+    <ul>
+      <app-lang
+        [text]="[
+            { lang : 'RU', text : 'Должен быть реализован следующий функционал:' },
+            { lang : 'EN', text : 'The following functionality should be implemented:' },
+          ]"></app-lang>
+      <li><app-lang
+        [text]="[
+            { lang : 'RU', text : 'Получения списка стран по API (/v1/geo/cities) серверной пагинацией' },
+            { lang : 'EN', text : 'Getting a list of countries via API (/v1/geo/cities) by server pagination' },
+          ]"></app-lang></li>
+      <li><app-lang
+        [text]="[
+            { lang : 'RU', text : 'Отображение полученной информации в таблице' },
+            { lang : 'EN', text : 'Displaying the received information in the table' },
+          ]"></app-lang></li>
+      <li><app-lang
+        [text]="[
+            { lang : 'RU', text : 'Фильтрация по стране (select/dropdown) и наименованию (поиск)' },
+            { lang : 'EN', text : 'Filtering by country (select/dropdown) and name (search)' },
+          ]"></app-lang></li>
+      <li><app-lang
+        [text]="[
+            { lang : 'RU', text : 'По клику на иконку просмотра - открывать в popup для отображения информации по городу' },
+            { lang : 'EN', text : 'By clicking on the view icon, open it in the popup to display information about the city' },
+          ]"></app-lang></li>
+      <li><app-lang
+        [text]="[
+            { lang : 'RU', text : 'По клику на иконку редактирования - открывать в popup для редактирования информации по городу' },
+            { lang : 'EN', text : 'By clicking on the edit icon, open it in the popup to edit information about the city' },
+          ]"></app-lang></li>
+    </ul>
+
+    <p> <app-lang [text]="[
+        { lang: 'RU', text: 'Бонусом будет:' },
+        { lang: 'EN', text: 'The bonus will be:' },
+      ]"></app-lang> </p>
+    <ul>
+      <app-lang [text]="[
+          { lang: 'RU', text: 'Валидация (для полей население, дата основания, долгота, широта, добавить валидацию на допустимые значения) и отображение ошибок на полях формы редактирования' },
+          { lang: 'EN', text: 'Validation (for the fields population, date of foundation, longitude, latitude, add validation to acceptable values) and display errors in the fields of the editing form' },
+         ]"></app-lang>
+      <li> <app-lang [text]="[
+          { lang: 'RU', text: 'Сортировка таблиц (Страны - Наименование, Код страны) (Города - Страна, Наименование, Регион, Население)' },
+          { lang: 'EN', text: 'Sorting tables (Countries - Name, Country Code) (Cities - Country, Name, Region, Population)' },
+        ]"></app-lang> </li>
+      <li> <s> <app-lang [text]="[
+          { lang: 'RU', text: 'Выбор количества элементов в таблице' },
+          { lang: 'EN', text: 'Selecting the number of items in the table' },
+        ]"></app-lang> </s> </li>
+      <li> <app-lang [text]="[
+           { lang: 'RU', text: 'Отображение отредактированной информации (в таблице и popup-ах) в приоритете с полученной по API' },
+           { lang: 'EN', text: 'Displaying edited information (in the table and popups) in priority with the information received via the API\n' },
+        ]"></app-lang> </li>
+      <li> <s><app-lang [text]="[
+           { lang: 'RU', text: 'Локализация интерфейса (русский, английский)' },
+           { lang: 'EN', text: 'Localization of the interface (Russian, English)' },
+        ]"></app-lang></s> </li>
+    </ul>
+  </div>
+</mat-expansion-panel>
