@@ -38,5 +38,11 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    [length]="length"
+    [pageSize]="limit"
+    aria-label="Select page of users"
+    (page)="changePaginator($event)">
+  </mat-paginator>
 </div>

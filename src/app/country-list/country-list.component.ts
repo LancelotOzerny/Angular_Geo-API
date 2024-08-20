@@ -34,12 +34,28 @@ export class CountryListComponent implements OnInit
 
   ngOnInit(): void
   {
-    this.geoService.getCountries().subscribe({
+    this.setCountriesData();
+  }
+
+  limit: number = 5;
+  offset: number = 0;
+  length: number = 0;
+
+  setCountriesData()
+  {
+    this.geoService.getCountries(this.limit, this.offset).subscribe({
       next: (data : any) => {
-        console.log(data);
         this.dataSource = data.data;
+        this.length = data.metadata.totalCount;
       }
     });
+  }
+
+  changePaginator(event : any): void
+  {
+    this.limit = event.pageSize;
+    this.offset = event.pageIndex * this.limit;
+    this.setCountriesData();
   }
 
   applyFilter(event : any) : void
