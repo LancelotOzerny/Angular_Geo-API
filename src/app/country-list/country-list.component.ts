@@ -42,12 +42,21 @@ export class CountryListComponent implements OnInit
   offset: number = 0;
   length: number = 0;
 
+  paginatorIsEnable: boolean = false;
+  queryDelay : number = 1_000;
+
   setCountriesData()
   {
+    this.paginatorIsEnable = true;
+
     this.geoService.getCountries(this.limit, this.offset).subscribe({
       next: (data : any) => {
         this.dataSource = data.data;
         this.length = data.metadata.totalCount;
+
+        setTimeout(() => {
+          this.paginatorIsEnable = false;
+        }, this.queryDelay);
       }
     });
   }
