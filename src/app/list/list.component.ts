@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GeoService} from "../services/geo.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {QueryData} from "../query-data.interface";
 
 @Component({
   selector: 'app-list',
@@ -10,11 +11,11 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 })
 export abstract class ListComponent implements OnInit
 {
-  queryData = {
+  queryData : QueryData = {
     limit: 5,
     offset: 0,
     length: 0,
-    prefix: ''
+    prefix: '',
   };
 
   paginatorIsEnable: boolean = false;
