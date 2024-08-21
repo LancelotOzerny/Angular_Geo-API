@@ -9,6 +9,10 @@ export const routes: Routes = [
     component: CountryListComponent,
   },
   {
+    path: 'cities',
+    component: CitiesListComponent,
+  },
+  {
     path: 'cities/:id',
     component: CitiesListComponent,
   },
