@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {GeoService} from "../services/geo.service";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [],
   template: '',
-  styles: ``,
-  providers: [ GeoService ]
+  providers: [ GeoService, HttpClientModule, HttpClient ]
 })
 export abstract class ListComponent implements OnInit
 {

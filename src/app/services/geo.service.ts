@@ -5,8 +5,8 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class GeoService {
-
+export class GeoService
+{
   constructor(private http: HttpClient) { }
 
   private baseUrl : string = 'https://wft-geo-db.p.rapidapi.com/';
