@@ -78,6 +78,7 @@ export class CountryListComponent implements OnInit
     this.dataPrefix = filterValue.trim().toLowerCase();
 
     this.filterTimer = setTimeout(() => {
+      this.offset = 0;
       this.setCountriesData();
     }, 350);
   }
