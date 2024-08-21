@@ -1,5 +1,6 @@
 <mat-form-field>
-  <mat-select>
+  <mat-select value="none" (selectionChange)="selectChange($event)">
+    <mat-option value="none"> None </mat-option>
     @for (element of selectCountriesList; track element)
     {
     <mat-option [value]="element.code">{{element.name}}</mat-option>
