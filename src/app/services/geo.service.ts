@@ -15,11 +15,12 @@ export class GeoService {
     'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
   };
 
-  getCountries(limit : number = 5, offset : number = 0)
+  getCountries(limit : number = 5, offset : number = 0, prefix : string = '')
   {
     let paramsList = new HttpParams()
       .set('limit', limit.toString())
-      .set('offset', offset.toString());
+      .set('offset', offset.toString())
+      .set('namePrefix', prefix);
 
     return this.http.get(this.baseUrl + 'v1/geo/countries', {
       headers: this.headersList,

@@ -40,7 +40,7 @@ export class CountryListComponent implements OnInit
   {
     this.paginatorIsEnable = true;
 
-    this.geoService.getCountries(this.limit, this.offset).subscribe({
+    this.geoService.getCountries(this.limit, this.offset, this.dataPrefix).subscribe({
       next: (data : any) => {
         this.dataSource = data.data;
         this.length = data.metadata.totalCount;
@@ -65,8 +65,18 @@ export class CountryListComponent implements OnInit
     this.setCountriesData();
   }
 
+  filterTimer : any;
+  dataPrefix : string = '';
+
   applyFilter(event : any) : void
   {
+    clearTimeout(this.filterTimer);
 
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataPrefix = filterValue.trim().toLowerCase();
+
+    this.filterTimer = setTimeout(() => {
+      this.setCountriesData();
+    }, 350);
   }
 }
