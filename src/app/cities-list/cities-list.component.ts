@@ -6,10 +6,15 @@ import {MatIconModule} from "@angular/material/icon";
 import {ListComponent} from "../list/list.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatInputModule} from "@angular/material/input";
+import {MatSortModule} from "@angular/material/sort";
 
 @Component({
   selector: 'app-cites-list',
-  imports: [HttpClientModule, LangComponent, MatIconModule, MatFormFieldModule, MatSelectModule],
+  imports: [HttpClientModule, LangComponent, MatIconModule, MatFormFieldModule, MatSelectModule, MatFormFieldModule,
+    MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule],
   standalone: true,
   templateUrl: 'cities-list.component.html',
   styleUrl: 'cities-list.component.scss',
@@ -18,7 +23,7 @@ import {MatSelectModule} from "@angular/material/select";
 export class CitiesListComponent extends ListComponent implements OnInit
 {
   dataSource: {}[] = [];
-  displayedColumns: string[] = [];
+  displayedColumns: string[] = ['country', 'name', 'region', 'population'];
   selectCountriesList : { code : string, name : string }[] = [
     { code: 'Q222', name : 'albania' },
     { code: 'Q889', name : 'Afghanistan' },
@@ -73,7 +78,8 @@ export class CitiesListComponent extends ListComponent implements OnInit
 
     this.geoService.getCities(this.queryData).subscribe({
       next: (data : any) => {
-        console.log(data);
+        this.dataSource = data.data;
+        console.log(this.dataSource);
       }
     });
   }
