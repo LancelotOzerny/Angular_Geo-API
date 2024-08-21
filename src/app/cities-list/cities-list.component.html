@@ -1,16 +1,8 @@
 <mat-form-field>
-  <mat-label>
-    <app-lang [text]="[
-    { lang: 'RU', text: 'Страна' },
-    ]"></app-lang>
-  </mat-label>
-  <mat-select [formControl]="countriesSelectControl" required>
-    @for (country of countriesData; track country)
+  <mat-select>
+    @for (element of selectCountriesList; track element)
     {
-    <mat-option [value]="country.code">{{ country.name }}</mat-option>
+    <mat-option [value]="element.code">{{element.name}}</mat-option>
     }
   </mat-select>
-  @if (countriesSelectControl.hasError('required')) {
-  <mat-error>Please choose an animal</mat-error>
-  }
 </mat-form-field>
