@@ -7,11 +7,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {GeoService} from "../services/geo.service";
 import {HttpClientModule} from "@angular/common/http";
 import {LangComponent} from "../lang/lang.component";
+import {MatIconModule} from "@angular/material/icon";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientModule, LangComponent],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientModule, LangComponent, MatIconModule, RouterLink],
   templateUrl: './country-list.component.html',
   styleUrl: './country-list.component.scss',
   providers: [GeoService],

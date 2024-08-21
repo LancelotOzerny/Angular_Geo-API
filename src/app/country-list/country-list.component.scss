@@ -4,9 +4,17 @@ table {
 
 .mat-mdc-form-field {
   font-size: 14px;
-  width: 100%;
+  min-width: 320px;
 }
 
-td, th {
-  width: 25%;
+.center-align
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a
+  {
+    color: #222;
+  }
 }
