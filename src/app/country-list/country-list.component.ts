@@ -28,10 +28,10 @@ export class CountryListComponent extends ListComponent
   {
     this.paginatorIsEnable = true;
 
-    this.geoService.getCountries(this.limit, this.offset, this.dataPrefix).subscribe({
+    this.geoService.getCountries(this.queryData).subscribe({
       next: (data : any) => {
         this.dataSource = data.data;
-        this.length = data.metadata.totalCount;
+        this.queryData.length = data.metadata.totalCount;
 
         setTimeout(() => {
           this.paginatorIsEnable = false;

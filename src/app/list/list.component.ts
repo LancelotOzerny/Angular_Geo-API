@@ -11,15 +11,17 @@ import {GeoService} from "../services/geo.service";
 })
 export abstract class ListComponent implements OnInit
 {
-  limit: number = 5;
-  offset: number = 0;
-  length: number = 0;
+  queryData = {
+    limit: 5,
+    offset: 0,
+    length: 0,
+    prefix: ''
+  };
 
   paginatorIsEnable: boolean = false;
-  queryDelay : number = 250;
 
+  queryDelay : number = 250;
   filterTimer : any;
-  dataPrefix : string = '';
 
 
   /* ABSTRACT */
@@ -40,8 +42,8 @@ export abstract class ListComponent implements OnInit
   /* EVENTS */
   public changePaginator(event : any): void
   {
-    this.limit = event.pageSize;
-    this.offset = event.pageIndex * this.limit;
+    this.queryData.limit = event.pageSize;
+    this.queryData.offset = event.pageIndex * this.queryData.limit;
     this.setListData();
   }
 
@@ -50,10 +52,10 @@ export abstract class ListComponent implements OnInit
     clearTimeout(this.filterTimer);
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataPrefix = filterValue.trim().toLowerCase();
+    this.queryData.prefix = filterValue.trim().toLowerCase();
 
     this.filterTimer = setTimeout(() => {
-      this.offset = 0;
+      this.queryData.offset = 0;
       this.setListData();
     }, 350);
   }

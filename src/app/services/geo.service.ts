@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,12 @@ export class GeoService {
     'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
   };
 
-  getCountries(limit : number = 5, offset : number = 0, prefix : string = '')
+  getCountries(params : any) : Observable<Object>
   {
+    let limit = params.limit ?? 0;
+    let offset = params.offset ?? 0;
+    let prefix = params.prefix ?? '';
+
     let paramsList = new HttpParams()
       .set('limit', limit.toString())
       .set('offset', offset.toString())
