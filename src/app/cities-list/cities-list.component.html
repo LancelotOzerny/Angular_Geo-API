@@ -1,17 +1,19 @@
-<mat-form-field>
-  <mat-select value="" (selectionChange)="selectChange($event)">
-    <mat-option value=""> None </mat-option>
-    @for (element of selectCountriesList; track element)
-    {
-    <mat-option [value]="element.code">{{element.name}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+<div class="countries-header">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-</mat-form-field>
+  <mat-form-field>
+    <mat-select value="" (selectionChange)="selectChange($event)">
+      <mat-option value=""> None </mat-option>
+      @for (element of selectCountriesList; track element)
+      {
+      <mat-option [value]="element.code">{{element.name}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
