@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {Component} from '@angular/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {GeoService} from "../services/geo.service";
@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {LangComponent} from "../lang/lang.component";
 import {MatIconModule} from "@angular/material/icon";
 import {RouterLink} from "@angular/router";
+import {ListComponent} from "../list/list.component";
 
 @Component({
   selector: 'app-country-list',
@@ -18,27 +19,12 @@ import {RouterLink} from "@angular/router";
   styleUrl: './country-list.component.scss',
   providers: [GeoService],
 })
-export class CountryListComponent implements OnInit
+export class CountryListComponent extends ListComponent
 {
+  dataSource = [];
   displayedColumns = ['wikiDataId', 'name', 'code', 'currencyCodes'];
 
-  dataSource = [];
-
-  limit: number = 5;
-  offset: number = 0;
-  length: number = 0;
-
-  paginatorIsEnable: boolean = false;
-  queryDelay : number = 250;
-
-  constructor(private geoService : GeoService) {}
-
-  ngOnInit(): void
-  {
-    this.setCountriesData();
-  }
-
-  setCountriesData()
+  setListData(): void
   {
     this.paginatorIsEnable = true;
 
@@ -54,32 +40,9 @@ export class CountryListComponent implements OnInit
       error: (data : any) => {
         if (data.status === 429)
         {
-          this.setCountriesData();
+          this.setListData();
         }
       }
     });
-  }
-
-  changePaginator(event : any): void
-  {
-    this.limit = event.pageSize;
-    this.offset = event.pageIndex * this.limit;
-    this.setCountriesData();
-  }
-
-  filterTimer : any;
-  dataPrefix : string = '';
-
-  applyFilter(event : any) : void
-  {
-    clearTimeout(this.filterTimer);
-
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataPrefix = filterValue.trim().toLowerCase();
-
-    this.filterTimer = setTimeout(() => {
-      this.offset = 0;
-      this.setCountriesData();
-    }, 350);
   }
 }
