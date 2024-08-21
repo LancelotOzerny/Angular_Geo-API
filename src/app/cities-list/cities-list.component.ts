@@ -69,17 +69,24 @@ export class CitiesListComponent extends ListComponent implements OnInit
     });
   }
 
-  protected override setListData() : void
+  protected override setListData(): void
   {
-    if (this.queryData.countryCode === 'none')
-    {
-      return;
-    }
+    this.paginatorIsEnable = true;
 
     this.geoService.getCities(this.queryData).subscribe({
       next: (data : any) => {
         this.dataSource = data.data;
-        console.log(this.dataSource);
+        this.queryData.length = data.metadata.totalCount;
+
+        setTimeout(() => {
+          this.paginatorIsEnable = false;
+        }, this.queryDelay);
+      },
+      error: (data : any) => {
+        if (data.status === 429)
+        {
+          this.setListData();
+        }
       }
     });
   }

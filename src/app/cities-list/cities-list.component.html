@@ -51,5 +51,12 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  <mat-paginator
+    [pageSizeOptions]="[5, 6, 7, 8, 9, 10]"
+    [length]="this.queryData.length"
+    [pageSize]="this.queryData.limit"
+    [disabled]="paginatorIsEnable"
+    aria-label="Select page of users"
+    (page)="changePaginator($event)">
+  </mat-paginator>
 </div>
