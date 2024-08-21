@@ -11,8 +11,9 @@ export class GeoService
 
   private baseUrl : string = 'https://wft-geo-db.p.rapidapi.com/';
 
+  // key 1: 4b1e9f6388msh81adb0a7d89cc10p1c108ejsnb1235ed7ff78
   headersList : {} = {
-    'X-RapidAPI-Key': '4b1e9f6388msh81adb0a7d89cc10p1c108ejsnb1235ed7ff78',
+    'X-RapidAPI-Key' : 'b62b91ef2dmsh6a4c42a5ad5c8f1p145f18jsne0351b36c5cc',
     'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
   };
 
@@ -28,6 +29,30 @@ export class GeoService
       .set('namePrefix', prefix);
 
     return this.http.get(this.baseUrl + 'v1/geo/countries', {
+      headers: this.headersList,
+      params: paramsList,
+    });
+  }
+
+  getCities(params : any) : Observable<Object>
+  {
+    let limit = params.limit ?? 0;
+    let offset = params.offset ?? 0;
+    let prefix = params.prefix ?? '';
+    let countryIds = params.countryCode ?? '';
+
+    console.log({
+      params : params,
+      countryIds: countryIds
+    });
+
+    let paramsList = new HttpParams()
+      .set('limit', limit.toString())
+      .set('offset', offset.toString())
+      .set('countryIds', countryIds)
+      .set('namePrefix', prefix);
+
+    return this.http.get(this.baseUrl + 'v1/geo/cities', {
       headers: this.headersList,
       params: paramsList,
     });
