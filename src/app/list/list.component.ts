@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {GeoService} from "../services/geo.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {QueryData} from "../query-data.interface";
+import {LanguageService} from "../services/language.service";
 
 @Component({
   selector: 'app-list',
   standalone: true,
   template: '',
-  providers: [ GeoService, HttpClientModule, HttpClient ]
+  providers: [ GeoService, HttpClientModule, HttpClient, LanguageService ]
 })
 export abstract class ListComponent implements OnInit
 {
@@ -16,6 +17,7 @@ export abstract class ListComponent implements OnInit
     offset: 0,
     length: 0,
     prefix: '',
+    lang: 'RU',
   };
 
   paginatorIsEnable: boolean = false;
@@ -32,9 +34,16 @@ export abstract class ListComponent implements OnInit
 
 
   /* GENERAL */
-  constructor(protected geoService : GeoService) {}
+  constructor(protected geoService : GeoService, protected langService : LanguageService) {}
   public ngOnInit(): void
   {
+    this.langService.language$.subscribe(
+      lang => {
+        this.queryData.lang = lang;
+        this.setListData();
+      }
+    );
+
     this.setListData();
   }
 

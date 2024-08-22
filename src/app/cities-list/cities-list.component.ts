@@ -14,6 +14,7 @@ import {ActivatedRoute, RouterModule} from "@angular/router";
 import {LancyPopupComponent} from "../lancy-popup/lancy-popup.component";
 import {MatButtonToggle} from "@angular/material/button-toggle";
 import {FormsModule} from "@angular/forms";
+import {LanguageService} from "../services/language.service";
 
 @Component({
   selector: 'app-cites-list',
@@ -43,9 +44,9 @@ export class CitiesListComponent extends ListComponent implements OnInit
     population : '',
   }
 
-  constructor( geoService : GeoService, private route: ActivatedRoute )
+  constructor( geoService : GeoService, langService : LanguageService, private route: ActivatedRoute )
   {
-    super(geoService);
+    super(geoService, langService);
   }
 
   override ngOnInit(): void

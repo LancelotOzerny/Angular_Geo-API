@@ -22,10 +22,12 @@ export class GeoService
     let limit = params.limit ?? 0;
     let offset = params.offset ?? 0;
     let prefix = params.prefix ?? '';
+    let languageCode = params.lang ?? 'RU';
 
     let paramsList = new HttpParams()
       .set('limit', limit.toString())
       .set('offset', offset.toString())
+      .set('languageCode', languageCode)
       .set('namePrefix', prefix);
 
     return this.http.get(this.baseUrl + 'v1/geo/countries', {
@@ -40,11 +42,13 @@ export class GeoService
     let offset = params.offset ?? 0;
     let prefix = params.prefix ?? '';
     let countryIds = params.countryCode ?? '';
+    let languageCode = params.lang ?? 'RU';
 
     let paramsList = new HttpParams()
       .set('limit', limit.toString())
       .set('offset', offset.toString())
       .set('countryIds', countryIds)
+      .set('languageCode', languageCode)
       .set('namePrefix', prefix);
 
     return this.http.get(this.baseUrl + 'v1/geo/cities', {

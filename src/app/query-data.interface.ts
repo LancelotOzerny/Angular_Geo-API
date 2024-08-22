@@ -3,5 +3,6 @@ export interface QueryData {
   offset: number;
   length: number;
   prefix: string;
+  lang: string;
   countryCode?: string;
 }
