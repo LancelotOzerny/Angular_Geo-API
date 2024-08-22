@@ -9,8 +9,14 @@
 </div>
 
 <mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="this.applyFilter($event)" placeholder="Ex. Mia" #input>
+  <mat-label>
+    <app-lang
+      [text]="[
+        { lang: 'EN', text: 'Naming Filter' },
+        { lang: 'RU', text: 'Фильтр по названию' },
+      ]"></app-lang>
+  </mat-label>
+  <input matInput (keyup)="this.applyFilter($event)" #input>
 </mat-form-field>
 
 <div class="mat-elevation-z8">
@@ -66,7 +72,13 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      <td class="mat-cell" colspan="4">
+        <app-lang
+          [text]="[
+            { lang: 'EN', text: 'No data matching the filter' },
+            { lang: 'RU', text: 'Не найдено результатов по фильтру' },
+          ]"/> "{{input.value}}"
+      </td>
     </tr>
   </table>
 
