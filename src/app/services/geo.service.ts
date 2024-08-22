@@ -11,9 +11,9 @@ export class GeoService
 
   private baseUrl : string = 'https://wft-geo-db.p.rapidapi.com/';
 
-  // key 1: 4b1e9f6388msh81adb0a7d89cc10p1c108ejsnb1235ed7ff78
+  // key 1: b62b91ef2dmsh6a4c42a5ad5c8f1p145f18jsne0351b36c5cc
   headersList : {} = {
-    'X-RapidAPI-Key' : 'b62b91ef2dmsh6a4c42a5ad5c8f1p145f18jsne0351b36c5cc',
+    'X-RapidAPI-Key' : '4b1e9f6388msh81adb0a7d89cc10p1c108ejsnb1235ed7ff78',
     'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
   };
 
@@ -22,12 +22,14 @@ export class GeoService
     let limit = params.limit ?? 0;
     let offset = params.offset ?? 0;
     let prefix = params.prefix ?? '';
+    let sort = params.sort ?? '';
     let languageCode = params.lang ?? 'RU';
 
     let paramsList = new HttpParams()
       .set('limit', limit.toString())
       .set('offset', offset.toString())
       .set('languageCode', languageCode)
+      .set('sort', sort)
       .set('namePrefix', prefix);
 
     return this.http.get(this.baseUrl + 'v1/geo/countries', {
@@ -40,6 +42,7 @@ export class GeoService
   {
     let limit = params.limit ?? 0;
     let offset = params.offset ?? 0;
+    let sort = params.sort ?? '';
     let prefix = params.prefix ?? '';
     let countryIds = params.countryCode ?? '';
     let languageCode = params.lang ?? 'RU';
@@ -49,6 +52,7 @@ export class GeoService
       .set('offset', offset.toString())
       .set('countryIds', countryIds)
       .set('languageCode', languageCode)
+      .set('sort', sort)
       .set('namePrefix', prefix);
 
     return this.http.get(this.baseUrl + 'v1/geo/cities', {

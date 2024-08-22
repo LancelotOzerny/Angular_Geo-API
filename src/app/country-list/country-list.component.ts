@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
+import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -14,7 +14,8 @@ import {ListComponent} from "../list/list.component";
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientModule, LangComponent, MatIconModule, RouterLink],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, HttpClientModule,
+    LangComponent, MatIconModule, RouterLink],
   templateUrl: './country-list.component.html',
   styleUrl: './country-list.component.scss',
   providers: [GeoService],
@@ -23,6 +24,7 @@ export class CountryListComponent extends ListComponent
 {
   dataSource = [];
   displayedColumns = ['wikiDataId', 'name', 'code', 'currencyCodes'];
+  @ViewChild(MatSort) sort ?: MatSort;
 
   setListData(): void
   {
@@ -40,7 +42,9 @@ export class CountryListComponent extends ListComponent
       error: (data : any) => {
         if (data.status === 429)
         {
-          this.setListData();
+          setTimeout(() => {
+            this.setListData();
+          }, this.queryDelay);
         }
       }
     });

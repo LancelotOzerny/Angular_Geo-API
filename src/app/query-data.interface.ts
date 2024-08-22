@@ -4,5 +4,6 @@ export interface QueryData {
   length: number;
   prefix: string;
   lang: string;
+  sort: string;
   countryCode?: string;
 }

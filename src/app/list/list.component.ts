@@ -3,6 +3,7 @@ import {GeoService} from "../services/geo.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {QueryData} from "../query-data.interface";
 import {LanguageService} from "../services/language.service";
+import {Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-list',
@@ -18,6 +19,7 @@ export abstract class ListComponent implements OnInit
     length: 0,
     prefix: '',
     lang: 'RU',
+    sort: '',
   };
 
   paginatorIsEnable: boolean = false;
@@ -47,6 +49,20 @@ export abstract class ListComponent implements OnInit
     this.setListData();
   }
 
+  public sortChage(sortState : Sort)
+  {
+    let sort = sortState.active;
+    if (sortState.direction === 'desc')
+    {
+      sort = '-' + sort;
+    }
+
+    this.queryData.sort = sort;
+
+    setTimeout(() => {
+      this.setListData();
+    }, 500);
+  }
 
   /* EVENTS */
   public changePaginator(event : any): void

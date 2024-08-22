@@ -31,7 +31,7 @@ export class CitiesListComponent extends ListComponent implements OnInit
   @ViewChild('city_edit_popap') cityEditPopup!: LancyPopupComponent;
 
   dataSource: {}[] = [];
-  displayedColumns: string[] = ['country', 'name', 'region', 'population', 'actions'];
+  displayedColumns: string[] = ['country', 'name', 'countryCode', 'region', 'population', 'actions'];
   selectCountriesList : { code : string, name : string }[] = [];
   cityInfo = {
     id : '',
@@ -100,7 +100,12 @@ export class CitiesListComponent extends ListComponent implements OnInit
         }
       },
       error: (error: any) => {
-        // Вызвать еще раз если ошибка 429
+        if (error.status === 429)
+        {
+          setTimeout(() => {
+            this.fillCountriesList(offset, limit);
+          }, this.queryDelay);
+        }
       }
     });
   }
@@ -121,7 +126,9 @@ export class CitiesListComponent extends ListComponent implements OnInit
       error: (data : any) => {
         if (data.status === 429)
         {
-          this.setListData();
+          setTimeout(() => {
+            this.setListData();
+          }, this.queryDelay);
         }
       }
     });

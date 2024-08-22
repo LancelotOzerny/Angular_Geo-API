@@ -14,10 +14,10 @@
 </mat-form-field>
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChage($event)">
     <!-- ID Column -->
     <ng-container matColumnDef="wikiDataId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <th mat-header-cell *matHeaderCellDef> ID </th>
       <td mat-cell *matCellDef="let row">
         <div class="center-align">
           {{row.wikiDataId}}
