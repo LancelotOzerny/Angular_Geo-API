@@ -1,5 +1,7 @@
-<lancy-popup #city_popap title="Первое окно">
-  <button (click)="city_popap.hide()">Скрыть первое попап</button>
+<lancy-popup #city_popap [title]="'Подробная информация по городу'">
+  <div class="popup-footer">
+    <button class="close-popup-button" (click)="city_popap.hide()">закрыть окно</button>
+  </div>
 </lancy-popup>
 
 <div class="countries-header">

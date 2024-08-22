@@ -1,30 +1,47 @@
 .countries-header
 {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
-.actions-group > button
+.actions-group > button, .close-popup-button
 {
-  aspect-ratio: 1 / 1;
-  margin: 5px 0;
-
   display: inline-flex;
   align-items: center;
 
   background : #fff;
-  border-radius: 50%;
   border: none;
   box-shadow: 0 0 3px #000;
   cursor : pointer;
-  
+
   &~button
   {
     margin-left: 10px;
   }
-  
+
   &:hover
   {
     background-color : #ddd;
   }
+}
+
+.actions-group > button
+{
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  margin: 5px 0;
+}
+
+.close-popup-button
+{
+  border-radius: 5px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+
+.popup-footer
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
