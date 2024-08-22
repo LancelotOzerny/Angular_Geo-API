@@ -29,7 +29,6 @@ export class LangComponent implements OnInit
 
   setText() : void
   {
-    console.log('test');
     for (let item of this.text)
     {
       if (item.lang === this.langService.getLang())
