@@ -1,4 +1,4 @@
-<lancy-popup #city_popap [title]="'Подробная информация по городу'">
+<lancy-popup #city_detail_popap [title]="'Подробная информация по городу'">
   <div class="info-row">
     <p class="info-row-title">ID</p>
     <p class="info-row-value">{{ cityInfo.id }}</p>
@@ -40,7 +40,37 @@
   </div>
 
   <div class="popup-footer">
-    <button class="close-popup-button" (click)="city_popap.hide()">закрыть окно</button>
+    <button class="close-popup-button" (click)="city_detail_popap.hide()">закрыть окно</button>
+  </div>
+</lancy-popup>
+<lancy-popup #city_edit_popap [title]="'Редактирование города'">
+  <div class="info-row">
+    <p class="info-row-title">ID</p>
+    <p class="info-row-value">{{ cityInfo.id }}</p>
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Name</p>
+    <input class="info-row-value" type="text" matInput [(ngModel)]="cityInfo.name" [placeholder]="cityInfo.name">
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Country</p>
+    <input class="info-row-value" type="text" matInput [(ngModel)]="cityInfo.country" [placeholder]="cityInfo.country">
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Region</p>
+    <input class="info-row-value" type="text" matInput [(ngModel)]="cityInfo.region" [placeholder]="cityInfo.region">
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Population</p>
+    <input class="info-row-value" type="text" matInput [(ngModel)]="cityInfo.population" [placeholder]="cityInfo.population">
+  </div>
+
+  <div class="popup-footer">
+    <button class="close-popup-button" (click)="city_edit_popap.hide()">закрыть окно</button>
   </div>
 </lancy-popup>
 
@@ -94,7 +124,7 @@
       <td mat-cell *matCellDef="let row">
         <div class="actions-group">
           <button (click)="showCityInfo(row)"><mat-icon>remove_red_eye</mat-icon></button>
-          <button><mat-icon>edit</mat-icon></button>
+          <button (click)="editCityInfo(row)" ><mat-icon>edit</mat-icon></button>
         </div>
       </td>
     </ng-container>

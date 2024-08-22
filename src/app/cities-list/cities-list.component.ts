@@ -13,11 +13,12 @@ import {MatSortModule} from "@angular/material/sort";
 import {ActivatedRoute, RouterModule} from "@angular/router";
 import {LancyPopupComponent} from "../lancy-popup/lancy-popup.component";
 import {MatButtonToggle} from "@angular/material/button-toggle";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-cites-list',
   imports: [HttpClientModule, LangComponent, MatIconModule, MatFormFieldModule, MatSelectModule, MatFormFieldModule,
-    MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, LancyPopupComponent, MatButtonToggle],
+    MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, LancyPopupComponent, MatButtonToggle, FormsModule],
   standalone: true,
   templateUrl: 'cities-list.component.html',
   styleUrl: 'cities-list.component.scss',
@@ -25,7 +26,8 @@ import {MatButtonToggle} from "@angular/material/button-toggle";
 })
 export class CitiesListComponent extends ListComponent implements OnInit
 {
-  @ViewChild('city_popap') cityPopup!: LancyPopupComponent;
+  @ViewChild('city_detail_popap') cityDetailPopup!: LancyPopupComponent;
+  @ViewChild('city_edit_popap') cityEditPopup!: LancyPopupComponent;
 
   dataSource: {}[] = [];
   displayedColumns: string[] = ['country', 'name', 'region', 'population', 'actions'];
@@ -40,8 +42,6 @@ export class CitiesListComponent extends ListComponent implements OnInit
     region : '',
     population : '',
   }
-
-  private countryCode = 'none';
 
   constructor( geoService : GeoService, private route: ActivatedRoute )
   {
@@ -68,7 +68,13 @@ export class CitiesListComponent extends ListComponent implements OnInit
   public showCityInfo(city : any) : void
   {
     this.cityInfo = city;
-    this.cityPopup.show();
+    this.cityDetailPopup.show();
+  }
+
+  public editCityInfo(city : any) : void
+  {
+    this.cityInfo = city;
+    this.cityEditPopup.show();
   }
 
   selectChange(event : any) : void

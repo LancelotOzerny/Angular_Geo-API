@@ -50,7 +50,10 @@
 
 .info-row
 {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+
   justify-content: space-between;
 
   & ~ &
@@ -62,10 +65,14 @@
   &-title
   {
     font-weight: 500;
-    width : 50%;
   }
-  &-value
-  {
-    width : 50%;
-  }
+}
+
+input.info-row-value
+{
+  outline: none;
+  border: none;
+
+  font-family: inherit;
+  font-size: inherit;
 }
