@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GeoService} from "../services/geo.service";
 import {HttpClientModule} from "@angular/common/http";
 import {LangComponent} from "../lang/lang.component";
@@ -11,11 +11,13 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
 import {ActivatedRoute, RouterModule} from "@angular/router";
+import {LancyPopupComponent} from "../lancy-popup/lancy-popup.component";
+import {MatButtonToggle} from "@angular/material/button-toggle";
 
 @Component({
   selector: 'app-cites-list',
   imports: [HttpClientModule, LangComponent, MatIconModule, MatFormFieldModule, MatSelectModule, MatFormFieldModule,
-    MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule],
+    MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, LancyPopupComponent, MatButtonToggle],
   standalone: true,
   templateUrl: 'cities-list.component.html',
   styleUrl: 'cities-list.component.scss',

@@ -1,3 +1,7 @@
+<lancy-popup #city_popap title="Первое окно">
+  <button (click)="city_popap.hide()">Скрыть первое попап</button>
+</lancy-popup>
+
 <div class="countries-header">
   <mat-form-field>
     <mat-label>Filter</mat-label>
@@ -46,8 +50,10 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Действия </th>
       <td mat-cell *matCellDef="let row">
-        <mat-icon>edit</mat-icon>
-        <mat-icon>remove_red_eye</mat-icon>
+        <div class="actions-group">
+          <button (click)="city_popap.show()"><mat-icon>remove_red_eye</mat-icon></button>
+          <button (click)="city_popap.show()"><mat-icon>edit</mat-icon></button>
+        </div>
       </td>
     </ng-container>
 
