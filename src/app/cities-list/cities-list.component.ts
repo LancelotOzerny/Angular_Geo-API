@@ -24,7 +24,7 @@ import {ActivatedRoute, RouterModule} from "@angular/router";
 export class CitiesListComponent extends ListComponent implements OnInit
 {
   dataSource: {}[] = [];
-  displayedColumns: string[] = ['country', 'name', 'region', 'population'];
+  displayedColumns: string[] = ['country', 'name', 'region', 'population', 'actions'];
   selectCountriesList : { code : string, name : string }[] = [
     { code: 'Q222', name : 'albania' },
     { code: 'Q889', name : 'Afghanistan' },
