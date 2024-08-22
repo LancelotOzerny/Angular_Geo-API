@@ -84,7 +84,7 @@ export class CitiesListComponent extends ListComponent implements OnInit
     this.setListData();
   }
 
-  private fillCountriesList(offset = 0, limit = 5)
+  private fillCountriesList(offset = 0, limit = 10)
   {
     this.geoService.getCountries({ limit: limit, offset: offset }).subscribe({
       next: (data: any) => {
@@ -96,7 +96,9 @@ export class CitiesListComponent extends ListComponent implements OnInit
         const newOffset = offset + limit;
         if (newOffset < data.metadata.totalCount)
         {
-          // Вызвать еще раз
+          setTimeout(() => {
+            this.fillCountriesList(newOffset, limit);
+          }, this.queryDelay);
         }
       },
       error: (error: any) => {
