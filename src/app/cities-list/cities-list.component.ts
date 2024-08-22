@@ -31,7 +31,7 @@ export class CitiesListComponent extends ListComponent implements OnInit
   @ViewChild('city_edit_popap') cityEditPopup!: LancyPopupComponent;
 
   dataSource: {}[] = [];
-  displayedColumns: string[] = ['country', 'name', 'countryCode', 'region', 'population', 'actions'];
+  displayedColumns: string[] = ['country', 'name', 'countryCode', 'elevation', 'population', 'actions'];
   selectCountriesList : { code : string, name : string }[] = [];
   cityInfo = {
     id : '',
