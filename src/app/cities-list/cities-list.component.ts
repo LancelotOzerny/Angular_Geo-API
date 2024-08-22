@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {GeoService} from "../services/geo.service";
 import {HttpClientModule} from "@angular/common/http";
 import {LangComponent} from "../lang/lang.component";
@@ -25,13 +25,21 @@ import {MatButtonToggle} from "@angular/material/button-toggle";
 })
 export class CitiesListComponent extends ListComponent implements OnInit
 {
+  @ViewChild('city_popap') cityPopup!: LancyPopupComponent;
+
   dataSource: {}[] = [];
   displayedColumns: string[] = ['country', 'name', 'region', 'population', 'actions'];
-  selectCountriesList : { code : string, name : string }[] = [
-    { code: 'Q222', name : 'albania' },
-    { code: 'Q889', name : 'Afghanistan' },
-    { code: 'Q228', name : 'Andorra' },
-  ];
+  selectCountriesList : { code : string, name : string }[] = [];
+  cityInfo = {
+    id : '',
+    wikiDataId : '',
+    type : '',
+    name : '',
+    country : '',
+    countryCode : '',
+    region : '',
+    population : '',
+  }
 
   private countryCode = 'none';
 
@@ -40,7 +48,7 @@ export class CitiesListComponent extends ListComponent implements OnInit
     super(geoService);
   }
 
-  override ngOnInit()
+  override ngOnInit(): void
   {
     this.queryData = {
       ...this.queryData,
@@ -57,7 +65,13 @@ export class CitiesListComponent extends ListComponent implements OnInit
     this.fillCountriesList();
   }
 
-  selectChange(event : any)
+  public showCityInfo(city : any) : void
+  {
+    this.cityInfo = city;
+    this.cityPopup.show();
+  }
+
+  selectChange(event : any) : void
   {
     this.queryData.countryCode = event.value;
     this.setListData();

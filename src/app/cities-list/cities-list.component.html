@@ -1,4 +1,44 @@
 <lancy-popup #city_popap [title]="'Подробная информация по городу'">
+  <div class="info-row">
+    <p class="info-row-title">ID</p>
+    <p class="info-row-value">{{ cityInfo.id }}</p>
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">wikiDataID</p>
+    <p class="info-row-value">{{ cityInfo.wikiDataId }}</p>
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Type</p>
+    <p class="info-row-value">{{ cityInfo.type }}</p>
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Name</p>
+    <p class="info-row-value">{{ cityInfo.name }}</p>
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Country</p>
+    <p class="info-row-value">{{ cityInfo.country }}</p>
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Country Code</p>
+    <p class="info-row-value">{{ cityInfo.countryCode }}</p>
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Region</p>
+    <p class="info-row-value">{{ cityInfo.region }}</p>
+  </div>
+
+  <div class="info-row">
+    <p class="info-row-title">Population</p>
+    <p class="info-row-value">{{ cityInfo.population }}</p>
+  </div>
+
   <div class="popup-footer">
     <button class="close-popup-button" (click)="city_popap.hide()">закрыть окно</button>
   </div>
@@ -53,8 +93,8 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Действия </th>
       <td mat-cell *matCellDef="let row">
         <div class="actions-group">
-          <button (click)="city_popap.show()"><mat-icon>remove_red_eye</mat-icon></button>
-          <button (click)="city_popap.show()"><mat-icon>edit</mat-icon></button>
+          <button (click)="showCityInfo(row)"><mat-icon>remove_red_eye</mat-icon></button>
+          <button><mat-icon>edit</mat-icon></button>
         </div>
       </td>
     </ng-container>

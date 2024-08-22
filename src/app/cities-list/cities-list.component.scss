@@ -41,7 +41,31 @@
 
 .popup-footer
 {
+  margin-top: 25px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+
+.info-row
+{
+  display: flex;
+  justify-content: space-between;
+
+  & ~ &
+  {
+    border-top: 1px solid #aaa;
+    padding-top: 10px;
+  }
+
+  &-title
+  {
+    font-weight: 500;
+    width : 50%;
+  }
+  &-value
+  {
+    width : 50%;
+  }
 }
