@@ -10,6 +10,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
+import {ActivatedRoute, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-cites-list',
@@ -32,14 +33,26 @@ export class CitiesListComponent extends ListComponent implements OnInit
 
   private countryCode = 'none';
 
+  constructor( geoService : GeoService, private route: ActivatedRoute )
+  {
+    super(geoService);
+  }
+
   override ngOnInit()
   {
     this.queryData = {
       ...this.queryData,
       countryCode: ''
     };
+
+    this.route.params.subscribe(
+      (data : any) => {
+        this.queryData.countryCode = data.code ?? '';
+      }
+    );
+
     super.ngOnInit();
-    // this.fillCountriesList();
+    this.fillCountriesList();
   }
 
   selectChange(event : any)

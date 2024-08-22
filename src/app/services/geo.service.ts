@@ -41,11 +41,6 @@ export class GeoService
     let prefix = params.prefix ?? '';
     let countryIds = params.countryCode ?? '';
 
-    console.log({
-      params : params,
-      countryIds: countryIds
-    });
-
     let paramsList = new HttpParams()
       .set('limit', limit.toString())
       .set('offset', offset.toString())

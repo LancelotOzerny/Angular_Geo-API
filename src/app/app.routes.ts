@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: CitiesListComponent,
   },
   {
-    path: 'cities/:id',
+    path: 'cities/:code',
     component: CitiesListComponent,
   },
   {
