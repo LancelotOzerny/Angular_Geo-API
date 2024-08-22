@@ -1,3 +1,13 @@
+<div class="app-block app-block--expanded">
+  <div class="wrapper">
+    <button mat-button [matMenuTriggerFor]="aboveMenu">Меню</button>
+    <mat-menu #aboveMenu="matMenu">
+      <button mat-menu-item routerLink="/countries">Страны</button>
+      <button mat-menu-item routerLink="/cities">Города</button>
+    </mat-menu>
+  </div>
+</div>
+
 <div class="app-block">
   <div class="wrapper app-header-wrapper">
     <h1 class="app-title" >
