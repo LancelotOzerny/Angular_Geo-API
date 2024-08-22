@@ -1,29 +1,27 @@
-<div class="app-block app-block--expanded">
-  <div class="wrapper">
-    <button mat-button [matMenuTriggerFor]="aboveMenu">Меню</button>
-    <mat-menu #aboveMenu="matMenu">
-      <button mat-menu-item routerLink="/countries">Страны</button>
-      <button mat-menu-item routerLink="/cities">Города</button>
-    </mat-menu>
-  </div>
-</div>
-
-<div class="app-block">
-  <div class="wrapper app-header-wrapper">
-    <h1 class="app-title" >
+<div class="main-navigation">
+  <div class="main-navigation-wrapper">
+    <a class="main-navigation-link" routerLink="/countries">
+      <img class="main-navigation-logo" src="/assets/sprites/logotype.png" alt="Lancy Countries">
       <app-lang
         [text]="[
           { lang: 'EN', text: 'GeoInformation' },
           { lang: 'RU', text: 'Геоинформация' },
         ]"></app-lang>
-    </h1>
+    </a>
+
+    <ul class="h-navbar">
+      <li class="h-navbar-item"><a class="h-navbar-link" routerLink="/countries">Страны</a></li>
+      <li class="h-navbar-item"><a class="h-navbar-link" routerLink="/cities">Города</a></li>
+    </ul>
 
     <mat-radio-group (change)="ChangeLanguage($event)">
       <mat-radio-button [checked]="true" value="RU">RU</mat-radio-button>
       <mat-radio-button value="EN">EN</mat-radio-button>
     </mat-radio-group>
   </div>
+</div>
 
+<div class="app-block">
   <router-outlet></router-outlet>
   <div class="task-wrapper">
     <app-task></app-task>

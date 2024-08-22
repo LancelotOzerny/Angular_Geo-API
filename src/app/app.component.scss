@@ -1,5 +1,8 @@
 /*
   1) APPLICATION STYLES
+    1.1 GENERAL
+    1.2 MAIN NAVIGATION
+
   2) MATERIAL RADIO BUTTONS
 */
 
@@ -7,7 +10,7 @@
 
 
 
-/* -------------------- START APPLICATION STYLES -------------------- */
+/* -------------------- START APPLICATION STYLES (GENERAL) -------------------- */
 .app-block
 {
   max-width: 1200px;
@@ -41,6 +44,75 @@
 .app-block--expanded
 {
   max-width: 95%;
+}
+/* -------------------- START APPLICATION STYLES (MAIN NAVIGATION) -------------------- */
+.main-navigation
+{
+  background-color : #fff;
+  box-shadow: 0 0 2px #222;
+}
+
+.main-navigation-wrapper
+{
+  padding: 10px 100px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.main-navigation-logo
+{
+  margin-right: 15px;
+  height: 50px;
+}
+
+.h-navbar
+{
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.h-navbar-item
+{
+  display: block;
+
+  & ~ &
+  {
+    margin-left: 20px;
+  }
+}
+
+.h-navbar-link, .main-navigation-link
+{
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  display: block;
+  color: #222;
+  text-decoration: none;
+  transition: .1s;
+  position: relative;
+
+  &::before
+  {
+    content: "";
+
+    position: absolute;
+
+  }
+
+  &:hover &::before
+  {
+
+  }
+}
+
+.main-navigation-link
+{
+  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
 }
 /* -------------------- END APPLICATION STYLES -------------------- */
 

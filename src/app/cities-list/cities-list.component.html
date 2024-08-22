@@ -1,3 +1,13 @@
+<div class="page-wrapper">
+  <p class="page-title" >
+    <app-lang
+      [text]="[
+          { lang: 'EN', text: 'Cities' },
+          { lang: 'RU', text: 'Города' },
+        ]"></app-lang>
+  </p>
+</div>
+
 <lancy-popup #city_detail_popap [title]="'Подробная информация по городу'">
   <div class="info-row">
     <p class="info-row-title">ID</p>

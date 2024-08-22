@@ -1,3 +1,13 @@
+<div class="page-wrapper">
+  <p class="page-title" >
+    <app-lang
+      [text]="[
+          { lang: 'EN', text: 'Countries' },
+          { lang: 'RU', text: 'Страны' },
+        ]"></app-lang>
+  </p>
+</div>
+
 <mat-form-field>
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="this.applyFilter($event)" placeholder="Ex. Mia" #input>
