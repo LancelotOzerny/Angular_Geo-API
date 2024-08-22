@@ -10,8 +10,20 @@
     </a>
 
     <ul class="h-navbar">
-      <li class="h-navbar-item"><a class="h-navbar-link" routerLink="/countries">Страны</a></li>
-      <li class="h-navbar-item"><a class="h-navbar-link" routerLink="/cities">Города</a></li>
+      <li class="h-navbar-item"><a class="h-navbar-link" routerLink="/countries">
+        <app-lang
+          [text]="[
+          { lang: 'EN', text: 'Countries' },
+          { lang: 'RU', text: 'Страны' },
+        ]"></app-lang>
+      </a></li>
+      <li class="h-navbar-item"><a class="h-navbar-link" routerLink="/cities">
+        <app-lang
+          [text]="[
+          { lang: 'EN', text: 'Cities' },
+          { lang: 'RU', text: 'Города' },
+        ]"></app-lang>
+      </a></li>
     </ul>
 
     <mat-radio-group (change)="ChangeLanguage($event)">
