@@ -19,7 +19,7 @@
   &.show
   {
     display: flex;
-    animation-duration: .25s;
+    animation-duration: .3s;
     animation-timing-function: linear;
     animation-name: AnimationShowPopup;
   }
@@ -33,12 +33,14 @@
 {
   0%
   {
-    transform: scale(0, 0);
+    opacity: 0;
+    transform: scale(0, 0) rotate(180deg);
     display: none;
   }
   100%
   {
-    transform: scale(1, 1);
+    opacity: 1;
+    transform: scale(1, 1) rotate(0);
   }
 }
 
