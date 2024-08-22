@@ -1,33 +1,42 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {LanguageService} from "../services/language.service";
 
 @Component({
   selector: 'app-lang',
   standalone: true,
   imports: [],
-  templateUrl: './lang.component.html',
+  template: '{{ currentText }}',
   styles: ``,
-  providers: [ LanguageService ],
 })
-export class LangComponent
+export class LangComponent implements OnInit
 {
   @Input() text : { lang : string, text : string }[]  = [];
 
+  currentLang : string = 'RU';
+  currentText : string = '';
+
   constructor(private readonly langService : LanguageService) {}
 
-  getText() : string
+  ngOnInit()
   {
-    let output : string = '';
+    this.langService.language$.subscribe(
+      lang => {
+        this.currentLang = lang;
+        this.setText();
+      }
+    )
+  }
 
+  setText() : void
+  {
+    console.log('test');
     for (let item of this.text)
     {
       if (item.lang === this.langService.getLang())
       {
-        output = item.text;
+        this.currentText = item.text;
         break;
       }
     }
-
-    return output;
   }
 }
