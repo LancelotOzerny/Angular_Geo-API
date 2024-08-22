@@ -1,0 +1,13 @@
+<div class="lancy-popup" [class.show]="isVisible" [class.hide]="!isVisible && firstShow">
+  <div class="lancy-popup-inner">
+    @if (title)
+    {
+    <header class="lancy-popup-header">
+      <p class="lancy-popup-title">{{ title }}</p>
+    </header>
+    }
+    <div class="lancy-popup-container">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
